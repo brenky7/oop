@@ -1,16 +1,13 @@
 package main;
 import com.autobusy.*;
 import com.cestujuci.*;
-import java.io.FileFilter;
-import java.io.FileNotFoundException;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class main {
-
     public static void main(String[] args) throws IOException {
         ArrayList<Autobus> autobusy = new ArrayList<Autobus>();
         createBuses zapis = new createBuses();
@@ -23,15 +20,27 @@ public class main {
         cestujuci = generacia.createMyCestujuci();
         System.out.println("Pocet autobusov: " + autobusy.size() + "\n");
         System.out.println("Pocet cestujucich: " + cestujuci.size() + "\n");
-        /*for (Autobus autobus : autobusy) {
-            autobus.printInfo();
-            System.out.println();
-        }*/
+        matchMaking sparuj = new matchMaking(autobusy, cestujuci);
+        sparuj.match();
+        int counter2 = 0;
+        for (Autobus autobus : autobusy) {
+            if (autobus.getCapacita() == 0) {
+                //autobus.printInfo();
+                //System.out.println();
+                counter2++;
+            }
+            else{
+                autobus.printInfo();
+                System.out.println();
+            }
+        }
+        System.out.println("Pocet autobusov, ktore su plne: " + counter2);
         /*for (Cestujuci clovek: cestujuci){
-            clovek.printInfo();
-            System.out.println();
+            if (clovek instanceof bohatyCestujuci) {
+                clovek.printInfo();
+                System.out.println();
+            }
         }*/
-
     }
 
 }

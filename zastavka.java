@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class zastavka{
     public ArrayList<String> zastavky = new ArrayList<String>();
     zastavka(){
-        zastavky.add("Kosice");
-        zastavky.add("Zilina");
-        zastavky.add("Prievidza");
         zastavky.add("Martin");
         zastavky.add("Skalica");
         zastavky.add("Detva");
+        zastavky.add("Kosice");
+        zastavky.add("Zilina");
+        zastavky.add("Prievidza");
         zastavky.add("Brno");
         zastavky.add("Praha");
         zastavky.add("Mnichov");
