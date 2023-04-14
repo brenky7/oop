@@ -2,7 +2,7 @@ package com.autobusy;
 
 import java.util.ArrayList;
 
-public class medzistatnyAutobus extends Autobus implements zastavky{
+public class medzistatnyAutobus extends Autobus implements trasa{
 
     public ArrayList<String> zastavky = new ArrayList<String>();
 
@@ -13,77 +13,18 @@ public class medzistatnyAutobus extends Autobus implements zastavky{
         super();
     }
     @Override
-    public int getCapacita() {
-        return super.capacita;
-    }
-    @Override
-    public int getCena() {
-        return super.cena;
-    }
-    @Override
-    public boolean getWifi() {
-        return super.wifi;
-    }
-    @Override
-    public boolean getKlima() { return super.klima; }
-    @Override
-    public boolean getToaleta() {
-        return super.toaleta;
-    }
-    @Override
-    public boolean getNabijanie() {
-        return super.nabijanie;
-    }
-
-    @Override
-    public String getCasOdchodu() { return super.casOdchodu; }
-
-    public String getTrasaZaciatok() {
-        return super.trasaZaciatok;
-    }
-    public String getTrasaKoniec() {
-        return super.trasaKoniec;
-    }
-    @Override
-    public void setCapacita(int capacita) {
-        this.capacita = capacita;
-    }
-    @Override
-    public void setCena(int cena) {
-        this.cena = cena;
-    }
-    @Override
-    public void setWifi(boolean wifi) {
-        this.wifi = wifi;
-    }
-    @Override
-    public void setKlima(boolean klima) {
-        this.klima = klima;
-    }
-    @Override
-    public void setToaleta(boolean toaleta) {
-        this.toaleta = toaleta;
-    }
-    @Override
-    public void setNabijanie(boolean nabijanie) {
-        this.nabijanie = nabijanie;
-    }
-
-    @Override
-    public void setCasOdchodu(String casOdchodu) { this.casOdchodu = casOdchodu; }
-
     public void setTrasaKoniec() { this.trasaKoniec = zastavky.get(zastavky.size() - 1);;}
+    @Override
     public void setTrasaZaciatok() {
         this.trasaZaciatok = zastavky.get(0);
     }
-    @Override
     public void addZastavka(String zastavka) {
         zastavky.add(zastavka);
     }
     @Override
     public void printInfo() {
         System.out.println("Typ autobusu: " + this.getClass().getSimpleName());
-        System.out.println("Capacita: " + this.getCapacita() + " ludi");
+        System.out.println("Pocet volnych miest: " + this.getCapacita());
         System.out.println("Cena: " + this.getCena() + " eur");
         String sluzby = "Sluzby: ";
         if (this.getWifi()) {
@@ -106,5 +47,13 @@ public class medzistatnyAutobus extends Autobus implements zastavky{
         }
         trasa = trasa.substring(0, trasa.length() - 3);
         System.out.println(trasa);
+    }
+    public boolean najdiZastavku(String zastavka) {
+        for (String z : zastavky) {
+            if (z.equals(zastavka)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

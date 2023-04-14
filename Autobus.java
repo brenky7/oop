@@ -19,22 +19,23 @@ public abstract class Autobus {
         this.toaleta = b2;
         this.nabijanie = b3;
     }
-    public abstract void setCapacita(int capacita) ;
-    public abstract void setCena(int cena) ;
-    public abstract void setWifi(boolean wifi) ;
-    public abstract void setKlima(boolean klima) ;
-    public abstract void setToaleta(boolean toaleta) ;
-    public abstract void setNabijanie(boolean nabijanie) ;
-    public abstract void setCasOdchodu(String casOdchodu) ;
-    public abstract int getCapacita() ;
-    public abstract int getCena() ;
-    public abstract boolean getWifi() ;
-    public abstract boolean getKlima() ;
-    public abstract boolean getToaleta() ;
-    public abstract boolean getNabijanie() ;
-    public abstract String getCasOdchodu() ;
-    public abstract String getTrasaZaciatok() ;
-    public abstract String getTrasaKoniec() ;
+    public int getCena() { return cena; }
+    public void setCena(int cena) { this.cena = cena; }
+    public int getCapacita() { return capacita; }
+    public void setCapacita(int capacita) { this.capacita = capacita; }
+    public String getCasOdchodu() { return casOdchodu; };
+    public void setCasOdchodu(String casOdchodu) { this.casOdchodu = casOdchodu; };
+    public void setWifi(boolean wifi){ this.wifi = wifi; } ;
+    public void setKlima(boolean klima){ this.klima = klima; } ;
+    public void setToaleta(boolean toaleta){ this.toaleta = toaleta; } ;
+    public void setNabijanie(boolean nabijanie){ this.nabijanie = nabijanie; } ;
+    public boolean getWifi() { return wifi; }
+    public boolean getKlima() { return klima; }
+    public boolean getToaleta() { return toaleta; }
+    public boolean getNabijanie() { return nabijanie; }
+    public String getTrasaZaciatok(){ return trasaZaciatok; } ;
+    public String getTrasaKoniec(){ return trasaKoniec; } ;
+    public void setTrasaZaciatok(String trasaZaciatok){ this.trasaZaciatok = trasaZaciatok; };
+    public void setTrasaKoniec(String trasaKoniec){ this.trasaKoniec = trasaKoniec; };
     public abstract void printInfo() ;
-
 }

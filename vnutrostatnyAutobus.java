@@ -9,13 +9,10 @@ public abstract class vnutrostatnyAutobus extends Autobus{
     public vnutrostatnyAutobus(){
         super();
     };
-    public abstract void setDlzkaCesty(int dlzkaCesty);
-    public abstract int getDlzkaCesty();
-
-    public void setTrasaZaciatok(String trasaZaciatok){
-        this.trasaZaciatok = trasaZaciatok;
-    };
-    public void setTrasaKoniec(String trasaKoniec){
-        this.trasaKoniec = trasaKoniec;
-    };
+    public void setDlzkaCesty(int dlzkaCesty) {
+        this.dlzkaCesty = dlzkaCesty;
+    }
+    public int getDlzkaCesty() {
+        return this.dlzkaCesty;
+    }
 }
