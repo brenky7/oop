@@ -2,6 +2,7 @@ package com.cestujuci;
 import java.util.Random;
 
 public abstract class Cestujuci {
+    protected boolean booked;
     protected int budget;
     protected String trasaZaciatok;
     protected String trasaKoniec;
@@ -17,12 +18,24 @@ public abstract class Cestujuci {
         this.minutaOdchodu = minutaOdchodu;
         this.setCasOdchodu();
     }
-    public abstract void setBudget(int budget);
-    public abstract int getBudget();
-    public abstract void setTrasaZaciatok(String trasaZaciatok);
-    public abstract String getTrasaZaciatok();
-    public abstract void setTrasaKoniec(String trasaKoniec);
-    public abstract String getTrasaKoniec();
+    public void setBudget(int budget){
+        this.budget = budget;
+    }
+    public int getBudget(){
+        return this.budget;
+    }
+    public void setTrasaZaciatok(String trasaZaciatok){
+        this.trasaZaciatok = trasaZaciatok;
+    };
+    public String getTrasaZaciatok(){
+        return this.trasaZaciatok;
+    };
+    public void setTrasaKoniec(String trasaKoniec){
+        this.trasaKoniec = trasaKoniec;
+    };
+    public String getTrasaKoniec(){
+        return this.trasaKoniec;
+    };
     public void setCasOdchodu(){
         if (this.hodinaOdchodu < 10) {
             this.casOdchodu = "0" + this.hodinaOdchodu;
@@ -36,10 +49,26 @@ public abstract class Cestujuci {
             this.casOdchodu = this.casOdchodu + this.minutaOdchodu;
         }
     };
-    public abstract String getCasOdchodu();
-    public abstract void setHodinaOdchodu(int hodinaOdchodu);
-    public abstract int getHodinaOdchodu();
-    public abstract void setMinutaOdchodu(int minutaOdchodu);
-    public abstract int getMinutaOdchodu();
+    public String getCasOdchodu(){
+        return this.casOdchodu;
+    };
+    public void setHodinaOdchodu(int hodinaOdchodu){
+        this.hodinaOdchodu = hodinaOdchodu;
+    };
+    public int getHodinaOdchodu(){
+        return this.hodinaOdchodu;
+    };
+    public void setMinutaOdchodu(int minutaOdchodu){
+        this.minutaOdchodu = minutaOdchodu;
+    };
+    public int getMinutaOdchodu(){
+        return this.minutaOdchodu;
+    };
+    public void setBooked(boolean booked){
+        this.booked = booked;
+    };
+    public boolean getBooked(){
+        return this.booked;
+    };
     public abstract void printInfo();
 }
