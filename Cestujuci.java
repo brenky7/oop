@@ -1,5 +1,6 @@
 package com.cestujuci;
-import java.util.Random;
+import visitor.*;
+import com.autobusy.*;
 
 public abstract class Cestujuci {
     protected boolean booked;
@@ -49,6 +50,7 @@ public abstract class Cestujuci {
             this.casOdchodu = this.casOdchodu + this.minutaOdchodu;
         }
     };
+    public abstract void accept(Autobus autobus, Visitor visitor);
     public String getCasOdchodu(){
         return this.casOdchodu;
     };

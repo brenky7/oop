@@ -1,6 +1,11 @@
 package com.autobusy;
+import com.cestujuci.Cestujuci;
 
-public abstract class Autobus {
+import java.util.ArrayList;
+import java.util.Observable;
+
+public abstract class Autobus extends Observable{
+    protected ArrayList<Cestujuci> cestujuci = new ArrayList<Cestujuci>();
     protected int capacita;
     protected int cena;
     protected boolean wifi;
@@ -10,6 +15,7 @@ public abstract class Autobus {
     protected String trasaZaciatok;
     protected String trasaKoniec;
     protected String casOdchodu;
+    protected boolean plny;
     public Autobus() {}
     public Autobus(int i, int i1, boolean b, boolean b1, boolean b2, boolean b3) {
         this.capacita = i;
@@ -19,10 +25,25 @@ public abstract class Autobus {
         this.toaleta = b2;
         this.nabijanie = b3;
     }
+    public boolean getPlny() { return plny; }
+    public void setPlny(boolean plny) {
+        this.plny = plny;
+        setChanged();
+        notifyObservers(plny);
+    }
     public int getCena() { return cena; }
     public void setCena(int cena) { this.cena = cena; }
     public int getCapacita() { return capacita; }
-    public void setCapacita(int capacita) { this.capacita = capacita; }
+    public void setCapacita(int capacita) {
+        this.capacita = capacita;
+        if (capacita == 0) {
+            this.setPlny(true);
+        }
+    }
+    public void addCestujuci(Cestujuci cestujuci) {
+        this.cestujuci.add(cestujuci);
+        this.setCapacita(this.getCapacita() - 1);
+    }
     public String getCasOdchodu() { return casOdchodu; };
     public void setCasOdchodu(String casOdchodu) { this.casOdchodu = casOdchodu; };
     public void setWifi(boolean wifi){ this.wifi = wifi; } ;
@@ -37,5 +58,29 @@ public abstract class Autobus {
     public String getTrasaKoniec(){ return trasaKoniec; } ;
     public void setTrasaZaciatok(String trasaZaciatok){ this.trasaZaciatok = trasaZaciatok; };
     public void setTrasaKoniec(String trasaKoniec){ this.trasaKoniec = trasaKoniec; };
-    public abstract void printInfo() ;
+    public void printInfo(){
+        System.out.println("Typ autobusu: " + this.getClass().getSimpleName());
+        System.out.println("Pocet volnych miest: " + this.getCapacita());
+        System.out.println("Cena: " + this.getCena() + " eur");
+        String sluzby = "Sluzby: ";
+        if (this.getWifi()) {
+            sluzby = (sluzby + "Wifi ");
+        }
+        if (this.getKlima()) {
+            sluzby = (sluzby + "Klimatizacia ");
+        }
+        if (this.getToaleta()) {
+            sluzby = (sluzby + "Toaleta ");
+        }
+        if (this.getNabijanie()) {
+            sluzby = (sluzby + "Nabijanie");
+        }
+        System.out.println(sluzby);
+        System.out.println("Cas odchodu: " + this.getCasOdchodu());
+        System.out.println("Trasa: " + this.getTrasaZaciatok() + " - " + this.getTrasaKoniec());
+        System.out.println("Cestujuci: ");
+        for (Cestujuci cestujuci : this.cestujuci) {
+            System.out.println(cestujuci.getClass().getSimpleName());
+        }
+    } ;
 }

@@ -1,6 +1,7 @@
 package main;
 import com.cestujuci.*;
 import com.autobusy.*;
+import visitor.*;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class matchMaking {
         this.poleAutobusov = autobusy;
         this.poleCestujucich = cestujuci;
     }
+    pridajCestujuceho Visitor = new pridajCestujuceho();
     public void match(){
         int counter = 0, counterZnevyhodnenych = 0, counterTehotnych = 0, counterBohatych = 0, counterBeznych = 0;
         for (Cestujuci clovek: poleCestujucich){
@@ -29,8 +31,7 @@ public class matchMaking {
                             } else if (clovek instanceof beznyClovek) {
                                 counterBeznych++;
                             }
-                            autobus.setCapacita(capacita - 1);
-                            clovek.setBooked(true);
+                            clovek.accept(autobus, Visitor);
                             counter++;
                             break;
                         }
@@ -50,8 +51,7 @@ public class matchMaking {
                             } else if (clovek instanceof beznyClovek) {
                                 counterBeznych++;
                             }
-                            autobus.setCapacita(capacita - 1);
-                            clovek.setBooked(true);
+                            clovek.accept(autobus, Visitor);
                             counter++;
                             break;
                         }

@@ -1,5 +1,7 @@
 package com.autobusy;
 
+import com.cestujuci.Cestujuci;
+
 public class comfortMini extends vnutrostatnyAutobus{
     protected boolean sedadla;
     public void setSedadla(boolean sedadla){
@@ -33,5 +35,9 @@ public class comfortMini extends vnutrostatnyAutobus{
         System.out.println("Cas odchodu: " + this.getCasOdchodu());
         System.out.println("Dlzka cesty: " + this.getDlzkaCesty()+ " km");
         System.out.println("Trasa: " + this.getTrasaZaciatok() + " - " + this.getTrasaKoniec());
+        System.out.println("Cestujuci: ");
+        for (Cestujuci cestujuci : this.cestujuci) {
+            System.out.println(cestujuci.getClass().getSimpleName());
+        }
     }
 }

@@ -1,10 +1,12 @@
 package com.cestujuci;
-
-public class beznyClovek extends Cestujuci{
+import com.autobusy.Autobus;
+import visitor.*;
+public class beznyClovek extends Cestujuci implements Visitable{
     public beznyClovek() { super(); }
     public beznyClovek(int budget, String trasaZaciatok, String trasaKoniec, int hodinaOdchodu, int minutaOdchodu) {
         super(budget, trasaZaciatok, trasaKoniec, hodinaOdchodu, minutaOdchodu);
     }
+
     @Override
     public void printInfo() {
         System.out.println("Bezny clovek");
@@ -14,4 +16,9 @@ public class beznyClovek extends Cestujuci{
         System.out.println("Cas odchodu: " + super.casOdchodu);
     }
     public void checkSluzby(){ System.out.println("Bezny clovek si pozrie sluzby"); };
+
+    @Override
+    public void accept(Autobus autobus, Visitor visitor) {
+        visitor.pridajBezneho(autobus, this);
+    }
 }

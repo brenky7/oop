@@ -1,14 +1,11 @@
 package com.autobusy;
 
+import com.cestujuci.Cestujuci;
+
 import java.util.ArrayList;
 
 public class medzistatnyAutobus extends Autobus implements trasa{
-
     public ArrayList<String> zastavky = new ArrayList<String>();
-
-    public medzistatnyAutobus(int i, int i1, boolean b, boolean b1, boolean b2, boolean b3) {
-        super(i, i1, b, b1, b2, b3);
-    }
     public medzistatnyAutobus(){
         super();
     }
@@ -47,6 +44,10 @@ public class medzistatnyAutobus extends Autobus implements trasa{
         }
         trasa = trasa.substring(0, trasa.length() - 3);
         System.out.println(trasa);
+        System.out.println("Cestujuci: ");
+        for (Cestujuci cestujuci : this.cestujuci) {
+            System.out.println(cestujuci.getClass().getSimpleName());
+        }
     }
     public boolean najdiZastavku(String zastavka) {
         for (String z : zastavky) {
