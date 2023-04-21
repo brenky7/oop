@@ -40,26 +40,9 @@ public class main {
             }
         }
         System.out.println("Pocet autobusov, ktore su plne: " + counter2);
-        /*for (Cestujuci clovek: cestujuci){
-            if (clovek instanceof bohatyCestujuci) {
-                clovek.printInfo();
-                System.out.println();
-            }
-        }*/
-        mojFrame frame = new mojFrame();
 
-        /*JLabel label = new JLabel("Autobusy");
-        ImageIcon icon = new ImageIcon("logo.png");
-        label.setForeground(Color.cyan);
-        label.setIcon(icon);
-        label.setHorizontalTextPosition(JLabel.CENTER);
-        label.setVerticalTextPosition(JLabel.CENTER);
-        label.setForeground(Color.blue);
-        label.setVisible(true);
-
-        label.setBounds(200, 200, 150, 150);
-        frame.getContentPane().add(label);
-        frame.setVisible(true);*/
+        userData data = new userData();
+        loginController frame = new loginController(data.getLoginInfo());
 
     }
 
