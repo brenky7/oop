@@ -1,15 +1,11 @@
 package gui;
 
-import com.autobusy.*;
-import com.cestujuci.*;
-import visitor.Visitor;
 import java.util.Scanner;
 import java.util.*;
 import java.io.File;
-import java.util.Scanner;
 
-public class userData {
-    HashMap<String, String> loginInfo = new HashMap<String, String>();
+public class userData{
+    HashMap<String, User> loginInfo = new HashMap<String, User>();
 
     public userData() {
         File file = new File("userInfo.txt");
@@ -18,14 +14,20 @@ public class userData {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(" ");
-                loginInfo.put(parts[0], parts[1]);
+                if (parts.length < 5) {
+                    User user = new User(parts[0], parts[1], Integer.parseInt(parts[2]));
+                    loginInfo.put(parts[0], user);
+                } else {
+                    User user = new User(parts[0], parts[1], Integer.parseInt(parts[2]), parts[3], parts[4]);
+                    loginInfo.put(parts[0], user);
+                }
             }
             scanner.close();
         } catch (Exception e) {
-            System.out.println("Error");
+            //System.out.println("Error");
         }
-    } // dokoncit serializaciu - zapisovanie budgetu, konca trasy a casu odchodu do suboru
-    public HashMap<String, String> getLoginInfo() {
+    } // dokoncit serializaciu  konca trasy a casu odchodu do suboru
+    public HashMap<String, User> getLoginInfo() {
         return loginInfo;
     }
 }

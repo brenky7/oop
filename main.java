@@ -25,9 +25,9 @@ public class main {
         cestujuci = generacia.createMyCestujuci();
         System.out.println("Pocet autobusov: " + autobusy.size() + "\n");
         System.out.println("Pocet cestujucich: " + cestujuci.size() + "\n");
-        matchMaking sparuj = new matchMaking(autobusy, cestujuci);
-        sparuj.match();
-        int counter2 = 0;
+        //matchMaking sparuj = new matchMaking(autobusy, cestujuci);
+        //sparuj.match();
+        /*int counter2 = 0;
         for (Autobus autobus : autobusy) {
             if (autobus.getCapacita() == 0) {
                 autobus.printInfo();
@@ -38,11 +38,10 @@ public class main {
                 autobus.printInfo();
                 System.out.println();
             }
-        }
-        System.out.println("Pocet autobusov, ktore su plne: " + counter2);
-
+        }*/
+        //System.out.println("Pocet autobusov, ktore su plne: " + counter2);
         userData data = new userData();
-        loginController frame = new loginController(data.getLoginInfo());
+        loginController frame = new loginController(data);
 
     }
 

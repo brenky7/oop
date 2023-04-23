@@ -1,6 +1,7 @@
 package main;
 import com.cestujuci.*;
 import com.autobusy.*;
+import gui.User;
 import visitor.*;
 
 import java.util.ArrayList;
@@ -8,9 +9,35 @@ import java.util.ArrayList;
 public class matchMaking {
     public ArrayList<Autobus> poleAutobusov = new ArrayList<Autobus>();
     public ArrayList<Cestujuci> poleCestujucich = new ArrayList<Cestujuci>();
+    public User user;
     public matchMaking(ArrayList<Autobus> autobusy, ArrayList<Cestujuci> cestujuci){
         this.poleAutobusov = autobusy;
         this.poleCestujucich = cestujuci;
+    }
+    public void matchUser(User user){
+        this.user = user;
+        for (Autobus autobus : poleAutobusov) {
+            if (autobus instanceof medzistatnyAutobus) {
+                if ((((medzistatnyAutobus) autobus).najdiZastavku(user.getKoniecTrasy())) && (user.getCasOdchodu().equals(autobus.getCasOdchodu()))) {
+                    int capacita = autobus.getCapacita();
+                    int budget = user.getBudget();
+                    if ((capacita > 0) && (budget >= autobus.getCena())) {
+                        user.accept(autobus, Visitor);
+                        break;
+                    }
+                }
+            }
+            else {
+                if ((autobus.getTrasaKoniec().equals(user.getKoniecTrasy())) && (user.getCasOdchodu().equals(autobus.getCasOdchodu()))) {
+                    int capacita = autobus.getCapacita();
+                    int budget = user.getBudget();
+                    if ((capacita > 0) && (budget >= autobus.getCena())) {
+                        user.accept(autobus, Visitor);
+                        break;
+                    }
+                }
+            }
+        }
     }
     pridajCestujuceho Visitor = new pridajCestujuceho();
     public void match(){
